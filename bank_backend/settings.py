@@ -59,12 +59,12 @@ MIDDLEWARE = [
 
 
 
-CORS_ALLOW_ORIGINS  = [
-    "https://localhost:3000",
-    "http://localhost:5173",
-    "https://bank-app.onrender.com",
-]
-
+# CORS_ALLOW_ORIGINS  = [
+#     "https://localhost:3000",
+#     "http://localhost:5173",
+#     "https://bank-app.onrender.com",
+# ]
+CORS_ALLOW_ALL_ORIGINS = True
 ROOT_URLCONF = 'bank_backend.urls'
 
 TEMPLATES = [
