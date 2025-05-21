@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders',
     'core',
 ]
 
@@ -59,12 +59,12 @@ MIDDLEWARE = [
 
 
 
-# CORS_ALLOW_ORIGINS  = [
-#     "https://localhost:3000",
-#     "http://localhost:5173",
-#     "https://bank-app.onrender.com",
-# ]
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ORIGINS  = [
+    "https://localhost:3000",
+    "http://localhost:5173",
+    "https://localhost:5173",
+]
+
 ROOT_URLCONF = 'bank_backend.urls'
 
 TEMPLATES = [
