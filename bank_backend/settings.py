@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-oegg5=s_jifv*dsh5v4n(me9n-m^zdxg127r+l$w4piuou%lju
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ "https://bank-e8m1.onrender.com/"]
+ALLOWED_HOSTS = [ "*" ]
 
 
 # Application definition
@@ -59,10 +59,7 @@ MIDDLEWARE = [
 
 
 
-CORS_ALLOW_ORIGINS  = [
-    "https://localhost:3000",
-    "http://localhost:5173",
-]
+
 
 ROOT_URLCONF = 'bank_backend.urls'
 
