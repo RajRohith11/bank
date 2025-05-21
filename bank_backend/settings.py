@@ -30,7 +30,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['bank-bwro.onrender.com', 'localhost', '127.0.0.1']
 
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "OPTIONS",
+]
 
+CORS_ALLOW_HEADERS = [
+    "Content-Type",
+    "Authorization",
+]
 # Application definition
 
 INSTALLED_APPS = [
