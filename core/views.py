@@ -7,7 +7,7 @@ from rest_framework import status
 from .models import Customer, Account, Transaction
 from .serializers import CustomerSerializer, AccountSerializer, TransactionSerializer
 from decimal import Decimal
-# 1. Create Customer
+# 
 @api_view(['POST'])
 def create_customer(request):
     serializer = CustomerSerializer(data=request.data)
@@ -16,14 +16,13 @@ def create_customer(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# 2. Show All Customers
+
 @api_view(['GET'])
 def list_customers(request):
     customers = Customer.objects.all()
     serializer = CustomerSerializer(customers, many=True)
     return Response(serializer.data)
 
-# 3. Create Account
 @api_view(['POST'])
 def create_account(request):
     customer_id = request.data.get('customer_id')
@@ -41,7 +40,7 @@ def create_account(request):
     serializer = AccountSerializer(account)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-# 4. Get Account by Account Number
+
 @api_view(['GET'])
 def get_account_by_number(request, account_number):
     try:
@@ -51,7 +50,7 @@ def get_account_by_number(request, account_number):
     except Account.DoesNotExist:
         return Response({'error': 'Account not found'}, status=status.HTTP_404_NOT_FOUND)
 
-# 5. Update Account + Customer Info
+
 @api_view(['PUT'])
 def update_account(request, account_number):
     print("➡️ PUT request received for account:", account_number)
@@ -71,7 +70,7 @@ def update_account(request, account_number):
     print("❌ Serializer errors:", serializer.errors)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# 6. Deposit
+
 @api_view(['POST'])
 def deposit(request):
     account_number = request.data.get('account_number')
@@ -86,7 +85,7 @@ def deposit(request):
     except Account.DoesNotExist:
         return Response({'error': 'Account not found'}, status=status.HTTP_404_NOT_FOUND)
 
-# 7. Withdraw
+
 @api_view(['POST'])
 def withdraw(request):
     account_number = request.data.get('account_number')
@@ -103,8 +102,7 @@ def withdraw(request):
     except Account.DoesNotExist:
         return Response({'error': 'Account not found'}, status=status.HTTP_404_NOT_FOUND)
 
-# 8. Transfer
-# views.py
+
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -116,13 +114,13 @@ from rest_framework.exceptions import NotFound
 @api_view(['GET'])
 def get_account_by_number(request, account_number):
     try:
-        # Fetch the account by account_number
+        
         account = Account.objects.get(account_number=account_number)
         
-        # Serialize the account data
+        
         serializer = AccountSerializer(account)
         
-        # Return serialized data as JSON response
+        
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Account.DoesNotExist:
         raise NotFound(f"Account with account number {account_number} not found.")
@@ -130,13 +128,12 @@ def get_account_by_number(request, account_number):
 
 @api_view(['GET'])
 def get_all_accounts(request):
-    # Fetch all accounts from the database
+    
     accounts = Account.objects.all()
     
-    # Serialize the account data
+
     serializer = AccountSerializer(accounts, many=True)
     
-    # Return serialized data as JSON response
     return Response(serializer.data, status=status.HTTP_200_OK)
 @api_view(['POST'])
 def transfer(request):
@@ -168,7 +165,7 @@ def transfer(request):
         return Response({'error': 'Invalid amount format'}, status=status.HTTP_400_BAD_REQUEST)
 
 
-# 9. Transaction History
+
 @api_view(['GET'])
 def transaction_history(request, account_number):
     try:
@@ -179,7 +176,7 @@ def transaction_history(request, account_number):
     except Account.DoesNotExist:
         return Response({'error': 'Account not found'}, status=status.HTTP_404_NOT_FOUND)
 
-# 10. Delete Account
+
 @api_view(['DELETE'])
 def delete_account(request, account_number):
     try:

@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-oegg5=s_jifv*dsh5v4n(me9n-m^zdxg127r+l$w4piuou%lju
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ "*" ]
+ALLOWED_HOSTS = ['localhost','127.0.0.1' ]
 
 
 # Application definition
@@ -59,7 +59,10 @@ MIDDLEWARE = [
 
 
 
-
+CORS_ALLOW_ORIGINS  = [
+    "http://localhost:3000",
+    "http://localhost:5173",
+]
 
 ROOT_URLCONF = 'bank_backend.urls'
 
