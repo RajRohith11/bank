@@ -61,6 +61,7 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ORIGINS  = [
     "https://localhost:3000",
+    "http://localhost:5173/",
 ]
 
 ROOT_URLCONF = 'bank_backend.urls'
