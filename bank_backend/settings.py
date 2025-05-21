@@ -61,7 +61,7 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ORIGINS  = [
     "https://localhost:3000",
-    "http://localhost:5173/",
+    "http://localhost:5173",
     "https://bank-app.onrender.com",
 ]
 
